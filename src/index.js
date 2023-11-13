@@ -14,7 +14,7 @@
 
     function handleFormSubmission() {
         console.log("submitted!");
-        location.href = "output.html";
+        location.href = "src/output.html";
     }
 
     function handleFormClearing() {
