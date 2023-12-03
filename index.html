@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+        <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -40,43 +42,43 @@
                 <div class="form-group row">
                     <label class="col-sm-2">Title</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control form-control-sm" name="teiHeaderTitle">
+                        <input type="text" class="form-control form-control-sm" id="teiHeaderTitle">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2">Author</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" name="teiHeaderAuthor">
+                        <input type="text" class="form-control form-control-sm" id="teiHeaderAuthor">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2">Editor</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" name="teiHeaderEditor">
+                        <input type="text" class="form-control form-control-sm" id="teiHeaderEditor">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2">Publisher</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control form-control-sm" name="teiHeaderPublisher">
+                        <input type="text" class="form-control form-control-sm" id="teiHeaderPublisher">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2">Publisher Address</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control form-control-sm" name="teiHeaderPublisherAddress">
+                        <input type="text" class="form-control form-control-sm" id="teiHeaderPublisherAddress">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2">Publication Date</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control form-control-sm" name="teiHeaderPublicationDate">
+                        <input type="text" class="form-control form-control-sm" id="teiHeaderPublicationDate">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2">License <span class="badge badge-info">New</span></label>
                     <div class="col-sm-6">
-                        <select type="text" class="form-control form-control-sm" name="teiHeaderLicense">
+                        <select type="text" class="form-control form-control-sm" id="teiHeaderLicense">
                         <option value="CC_Attr_NonComm">Creative Commons Attribution-NonCommercial 4.0 International</option>
                         <option value="CC_Attr">Creative Commons Attribution 4.0 International</option>
                         <option value="CC_Attr_ShareAlike">Creative Commons Attribution-ShareAlike 4.0 International</option>
@@ -87,34 +89,39 @@
                 <div class="form-group row">
                     <label class="col-sm-2">Source Description <span class="badge badge-info">New</span></label>
                     <div class="col-sm-10">
-                        <textarea type="text" rows="2" cols="5" class="form-control"  name="teiHeaderSourceDescription"></textarea>
+                        <textarea type="text" rows="2" cols="5" class="form-control"  id="teiHeaderSourceDescription"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2">Project Description <span class="badge badge-info">New</span></label>
                     <div class="col-sm-10">
-                        <textarea type="text" rows="2" cols="5" class="form-control"  name="teiHeaderProjectDescription"></textarea>
+                        <textarea type="text" rows="2" cols="5" class="form-control"  id="teiHeaderProjectDescription"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2">Your Text <font color="red">* </font></label>
                     <div class="col-sm-10">
-                        <textarea type="text" rows="5" cols="5" class="form-control"  name="rawText" required="true"></textarea>
+                        <textarea type="text" rows="5" cols="5" class="form-control"  id="rawText" required="true"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10">
                         <button id="clear-btn" type="reset" class="btn btn-primary">Clear</button>
-                        <button id="submit-btn" type="submit" class="btn btn-info">Submit</button>
+                        <button id="submit-btn" type="submit" class="btn btn-info" py-click="submit_text">Submit</button>
                     </div>
                 </div>
             </form>
+        </div>
+
+        <div>
+            <textarea id="tei-output"></textarea>
         </div>
 
         <script src="src/index.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script type="py" src="src/main.py" config="./pyscript.json"></script>
     </body>
 </html>
 

@@ -8,7 +8,7 @@
      * the function that runs when the page loads; adds event listener to buttons as needed
      */
     function init() {
-        id("submit-btn").addEventListener("click", handleFormSubmission);
+        // id("submit-btn").addEventListener("click", handleFormSubmission);
         id("clear-btn").addEventListener("click", handleFormClearing);
     }
 
